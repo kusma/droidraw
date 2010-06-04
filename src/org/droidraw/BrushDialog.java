@@ -18,7 +18,7 @@ import android.widget.SeekBar;
 public class BrushDialog extends Dialog {
 
 	public interface OnBrushChangedListener {
-		void brushChanged(int color);
+		void brushChanged(int color, int size);
 	}
 
 	private static class ColorView extends View {
@@ -158,7 +158,8 @@ public class BrushDialog extends Dialog {
 	}
 
 	private ColorView colorView;
-	private SeekBar seekBar;
+	private SeekBar alphaBar;
+	private SeekBar sizeBar;
 	private Button okButton;
 	private Button cancelButton;
 	private OnBrushChangedListener listener;
@@ -170,23 +171,28 @@ public class BrushDialog extends Dialog {
 		colorView = new ColorView(getContext());
 		layout.addView(colorView);
 		
-		seekBar = new SeekBar(getContext());
-		seekBar.setMax(255);
-		seekBar.setProgress(255);
-		layout.addView(seekBar);
-		
+		alphaBar = new SeekBar(getContext());
+		alphaBar.setMax(255);
+		alphaBar.setProgress(255);
+		layout.addView(alphaBar);
+
+		sizeBar = new SeekBar(getContext());
+		sizeBar.setMax(64);
+		sizeBar.setProgress(8);
+		layout.addView(sizeBar);
+
 		okButton = new Button(getContext());
 		okButton.setText("OK");
 		okButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				int c = colorView.getCircleColor();
 				c = Color.argb(
-					seekBar.getProgress(),
+					alphaBar.getProgress(),
 					(int)Math.min(255, Color.red(c) * colorView.i + 255 * colorView.j),
 					(int)Math.min(255, Color.green(c) * colorView.i + 255 * colorView.j),
 					(int)Math.min(255, Color.blue(c) * colorView.i + 255 * colorView.j)
 				);
-				listener.brushChanged(c);
+				listener.brushChanged(c, sizeBar.getProgress());
 				dismiss();
 			}
 		});

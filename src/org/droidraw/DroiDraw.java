@@ -79,7 +79,7 @@ public class DroiDraw extends Activity implements BrushDialog.OnBrushChangedList
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void brushChanged(int c) {
-		view.setBrush(c, 16);
+	public void brushChanged(int c, int size) {
+		view.setBrush(c, size);
 	}
 }
