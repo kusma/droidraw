@@ -82,14 +82,14 @@ public class BrushDialog extends Dialog {
 			float x = event.getX() - 100;
 			float y = event.getY() - 100;
 			float dist = (float)Math.sqrt(x*x + y*y);
-			i = (x / 70) * 2.0f / 3 + 1.0f / 3;
-			j = (x / 70) * -1.0f / 3 + (y / 70) * (float)-Math.sqrt(3) / 3 + 1.0f / 3;
+			float ni = (x / 70) * 2.0f / 3 + 1.0f / 3;
+			float nj = (x / 70) * -1.0f / 3 + (y / 70) * (float)-Math.sqrt(3) / 3 + 1.0f / 3;
 
 			int a = event.getAction();
 			if (a == MotionEvent.ACTION_DOWN) {
 				if (Math.abs(80 - dist) < 20)
 					wheelDrag = true;
-				else if (Math.min(i, Math.min(j, 1 - i - j)) >= 0)
+				else if (Math.min(ni, Math.min(nj, 1 - ni - nj)) >= 0)
 					colorDrag = true;
 			}
 
@@ -100,9 +100,9 @@ public class BrushDialog extends Dialog {
 					invalidate();
 				}
 				else if (colorDrag) {
-					float k = Math.max(0, Math.min(1 - i - j, 1));
-					i = Math.max(0, Math.min(i, 1));
-					j = Math.max(0, Math.min(j, 1));
+					float k = Math.max(0, Math.min(1 - ni - nj, 1));
+					i = Math.max(0, Math.min(ni, 1));
+					j = Math.max(0, Math.min(nj, 1));
 					float len = i + j + k;
 					i /= len;
 					j /= len;
