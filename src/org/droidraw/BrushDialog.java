@@ -130,10 +130,10 @@ public class BrushDialog extends Dialog {
 			canvas.drawCircle(100, 100, r, wheelPaint);
 			canvas.drawCircle(100 + (float)Math.cos(th) * r, 100 + (float)Math.sin(th) * r, 10, selPaint);
 			int [] colors = new int[] {
-					getCircleColor(),
-					Color.argb(255,   0,   0,   0),
-					Color.argb(255, 255, 255, 255),
-					0, 0, 0 // pad due to a bug in the Android runtime...
+			    getCircleColor(),
+			    Color.argb(255,   0,   0,   0),
+			    Color.argb(255, 255, 255, 255),
+			    0, 0, 0 // pad due to a bug in the Android runtime...
 			};
 
 			canvas.drawVertices(VertexMode.TRIANGLES, 6,
