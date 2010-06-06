@@ -128,7 +128,6 @@ public class BrushDialog extends Dialog {
 		@Override protected void onDraw(Canvas canvas) {
 			float r = 80;
 			canvas.drawCircle(100, 100, r, wheelPaint);
-			canvas.drawCircle(100 + (float)Math.cos(th) * r, 100 + (float)Math.sin(th) * r, 10, selPaint);
 			int [] colors = new int[] {
 			    getCircleColor(),
 			    Color.argb(255,   0,   0,   0),
@@ -142,13 +141,8 @@ public class BrushDialog extends Dialog {
 			    colors, 0, // colors
 			    null, 0, 0, // indices
 			    triPaint);
-/*
-			canvas.drawVertices(VertexMode.TRIANGLES, 6,
-				    points, 0, // verts
-				    null, 0, // texs
-				    null, 0, // colors
-				    null, 0, 0, // indices
-				    selPaint); */
+
+			canvas.drawCircle(100 + (float)Math.cos(th) * r, 100 + (float)Math.sin(th) * r, 10, selPaint);
 			canvas.drawCircle(100 + px, 100 + py, 10, selPaint);
 		}
 
