@@ -74,11 +74,10 @@ public class BrushDialog extends Dialog {
 
 			selPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 			selPaint.setStyle(Paint.Style.STROKE);
-			selPaint.setStrokeWidth(1);
-
-			triPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-			triPaint.setStyle(Paint.Style.FILL);
 			selPaint.setStrokeWidth(2);
+
+			triPaint = new Paint(Paint.DITHER_FLAG);
+			triPaint.setStyle(Paint.Style.FILL);
 		}
 
 		private boolean wheelDrag = false; 
