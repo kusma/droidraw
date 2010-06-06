@@ -24,6 +24,7 @@ public class BrushDialog extends Dialog {
 	private static class ColorView extends View {
 
 		private final int[] colors;
+		private final float[] points;
 
 		public int getCircleColor() {
 			float th = (float)(this.th * ((colors.length - 1) / (2 * Math.PI)));
@@ -60,6 +61,11 @@ public class BrushDialog extends Dialog {
 				Color.argb(255, 255, 255,   0),
 				Color.argb(255, 255,   0,   0)
 			};
+
+			points = new float[] {
+					100 + (float)Math.cos(0) * 70, 100 + (float)Math.sin(0) * 70,
+					100 + (float)Math.cos((1.0 / 3) * Math.PI * 2) * 70, 100 + (float)Math.sin((1.0 / 3) * Math.PI * 2) * 70,
+					100 + (float)Math.cos((2.0 / 3) * Math.PI * 2) * 70, 100 + (float)Math.sin((2.0 / 3) * Math.PI * 2) * 70 };
 
 			wheelPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 			wheelPaint.setShader(new SweepGradient(100, 100, colors, null));
@@ -124,11 +130,6 @@ public class BrushDialog extends Dialog {
 			float r = 80;
 			canvas.drawCircle(100, 100, r, wheelPaint);
 			canvas.drawCircle(100 + (float)Math.cos(th) * r, 100 + (float)Math.sin(th) * r, 10, selPaint);
-			float [] points = new float[] {
-				100 + (float)Math.cos(0) * 70, 100 + (float)Math.sin(0) * 70,
-				100 + (float)Math.cos((1.0 / 3) * Math.PI * 2) * 70, 100 + (float)Math.sin((1.0 / 3) * Math.PI * 2) * 70,
-				100 + (float)Math.cos((2.0 / 3) * Math.PI * 2) * 70, 100 + (float)Math.sin((2.0 / 3) * Math.PI * 2) * 70
-			};
 			int [] colors = new int[] {
 					getCircleColor(),
 					Color.argb(255,   0,   0,   0),
