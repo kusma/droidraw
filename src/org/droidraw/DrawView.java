@@ -3,6 +3,7 @@ import android.content.Context;
 import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -27,7 +28,7 @@ public class DrawView extends View {
 		super(c);
 		paint = new Paint();
 		paint.setAntiAlias(true);
-		setBrush(0x3FFFFFFF, 4);
+		setBrush(Color.rgb(255, 0, 0), 8);
 	}
 
 	public void setBrush(int c, int r) {

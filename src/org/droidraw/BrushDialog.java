@@ -47,7 +47,7 @@ public class BrushDialog extends Dialog {
 		private float th = 0.0f;
 		private float px = 70;
 		private float py = 0;
-		public float i = 0;
+		public float i = 1;
 		public float j = 0;
 
 		public ColorView(Context context) {
